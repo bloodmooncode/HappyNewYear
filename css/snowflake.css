@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --bg-secondary: #343434;
+  --slider-shadow: inset 0 1px 1px rgb(47, 47, 47), 0 2px 3px rgb(27, 27, 27);
+  --wind-transform: 0vw;
+}
+
+:root.left {
+  --wind-transform: -20vw;
+}
+:root.right {
+  --wind-transform: 20vw;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保证视频充满容器并保持比例 */
+  z-index: -1; /* 让视频在背景层 */
+  pointer-events: none; /* 防止视频干扰页面交互 */
+}
+
+.content {
+  position: relative; /* 内容层级在视频上 */
+  z-index: 1;
+  color: #fff; /* 确保文字在视频背景上清晰可见 */
+}
+
+.snowflake {
+  color: #fff;
+  position: absolute;
+  top: -20px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateX(var(--wind-transform)) translateY(105vh);
+  }
+}
